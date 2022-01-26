@@ -71,7 +71,8 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Navigate to Center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:drawableTint="@color/black" />
 
             <TextView
                 android:id="@+id/payment_type_tv"
@@ -83,7 +84,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:drawableTint="@color/primaryTextColor" />
+                app:drawableTint="@color/black" />
 
             <TextView
                 android:id="@+id/minimum_age"
@@ -95,7 +96,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:drawableTint="@color/primaryTextColor" />
+                app:drawableTint="@color/black" />
 
             <TextView
                 android:id="@+id/vaccine_name"
@@ -107,7 +108,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:drawableTint="@color/primaryTextColor" />
+                app:drawableTint="@color/black" />
 
         </LinearLayout>
     </LinearLayout>

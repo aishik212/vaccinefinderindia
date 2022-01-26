@@ -46,7 +46,12 @@ class MainActivity : AppCompatActivity(), APICallback, View.OnClickListener {
         val mm = inflate.mmTv
         val yy = inflate.yyTv
         val srchBtn = inflate.srchBtn
-        val url = "https://cdndemo-api.co-vin.in/api/v2/admin/location/states"
+
+        var start = "https://cdndemo-api.co-vin.in"
+        if (!BuildConfig.DEBUG) {
+            start = "https://cdn-api.co-vin.in"
+        }
+        val url = "$start/api/v2/admin/location/states"
         APIClass.callAPI(url, "GET", APIClass.Companion.WHICHDATA.STATES, this)
         setDateUI(dateBtn, dateBG, dd, mm, yy, datePicker)
 
@@ -55,7 +60,7 @@ class MainActivity : AppCompatActivity(), APICallback, View.OnClickListener {
                 districtSpinner.getItemAtPosition(districtSpinner.selectedItemPosition).toString()
             val districtID = districtIDMap[dName]
             val url =
-                "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=$districtID&date=${dd.text}-${mm.text}-${yy.text}"
+                "$start/api/v2/appointment/sessions/public/findByDistrict?district_id=$districtID&date=${dd.text}-${mm.text}-${yy.text}"
             APIClass.callAPI(url,
                 "GET",
                 APIClass.Companion.WHICHDATA.VACCINATIONS,
@@ -86,7 +91,7 @@ class MainActivity : AppCompatActivity(), APICallback, View.OnClickListener {
             ) {
                 val toString = stateSpinner.selectedItem.toString()
                 val stateID = stateIDMap[toString]
-                val url = "https://cdndemo-api.co-vin.in/api/v2/admin/location/districts/$stateID"
+                val url = "$start/api/v2/admin/location/districts/$stateID"
                 APIClass.callAPI(url,
                     "GET",
                     APIClass.Companion.WHICHDATA.DISTRICTS,
