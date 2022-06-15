@@ -190,9 +190,20 @@ class MainActivity : AppCompatActivity(), APICallback, View.OnClickListener {
             } else {
                 inflate.loginBtn.text = "CHECK YOUR APPOINTMENTS Dr.${currentUserData.name}"
             }
+            inflate.signoutBtn.visibility = VISIBLE
+            inflate.signoutBtn.setOnClickListener {
+                LoginActivity.currentUserData = null
+                LoginActivity.currentUser = null
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
+            }
             inflate.loginBtn.setOnClickListener {
                 startActivity(Intent(this, AppointmentsActivity::class.java))
             }
+        } else {
+            inflate.signoutBtn.visibility = GONE
         }
     }
 

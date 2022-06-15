@@ -98,7 +98,7 @@ class AppointmentsActivity : AppCompatActivity(), View.OnClickListener {
         val client = OkHttpClient().newBuilder()
             .build()
         val request: Request = Request.Builder()
-            .url("https://ap-south-1.aws.data.mongodb-api.com/app/application-0-btquy/endpoint/get/users?secret=tanmoy")
+            .url("https://ap-south-1.aws.data.mongodb-api.com/app/application-0-btquy/endpoint/get/user/id?secret=tanmoy")
             .build()
         Thread {
             val response: Response = client.newCall(request).execute()

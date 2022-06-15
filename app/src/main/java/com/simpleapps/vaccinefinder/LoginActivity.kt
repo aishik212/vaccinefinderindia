@@ -144,20 +144,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkUser() {
+        val email = currentUser?.email
         val client = OkHttpClient().newBuilder()
             .build()
         val request: Request = Request.Builder()
-            .url("https://ap-south-1.aws.data.mongodb-api.com/app/application-0-btquy/endpoint/get/users?secret=tanmoy")
+            .url("https://ap-south-1.aws.data.mongodb-api.com/app/application-0-btquy/endpoint/get/users?email=$email&secret=tanmoy")
             .build()
         Thread {
             val response: Response = client.newCall(request).execute()
             Log.d("texts", "checkUser: ")
             if (response.isSuccessful) {
                 val string1 = response.body?.string()
+                Log.d("texts", "checkUser: " + string1)
                 val aub = AUB.fromJson(string1.toString())
                 var num = 0
                 aub.iterator().forEach {
-                    if (it.email != null && it.email == currentUser?.email && num == 0) {
+                    if (it.email != null && it.email == email && num == 0) {
                         Log.d("texts", "checkUser: $it")
                         currentUserData = it
                         num++
